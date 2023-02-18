@@ -1,8 +1,0 @@
-{
-  "id": 1,
-  "name": "LOCA 365 카드",
-  "company": "롯데카드",
-  "image": "https://api.card-gorilla.com:8080/storage/card/2330/card_img/24131/2330card.png",
-  "benefit": [null, "yes", null, "yes", null, "yes", "yes", null, null],
-  "type": "CREDIT"
-}
