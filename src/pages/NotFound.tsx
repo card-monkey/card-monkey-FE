@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { isRouteErrorResponse, useNavigate, useRouteError } from "react-router";
 import styled from "styled-components";
 import Back from "../components/ui/Back";
 
@@ -6,10 +6,24 @@ type Props = {};
 
 const NotFound = (props: Props) => {
   const navigate = useNavigate();
-
   const clickButton = () => {
     navigate(-1);
   };
+  const error = useRouteError();
+  if (isRouteErrorResponse(error)) {
+    if (error.status === 404) {
+      return (
+        <Container>
+          <h2>404 Not Found</h2>
+          <img src="/monkey_notfound.png" alt="" />
+          <button onClick={clickButton}>뒤로 가기</button>
+        </Container>
+      );
+    }
+    if (error.status === 503) {
+      return <div>Looks like our API is down</div>;
+    }
+  }
   return (
     <Container>
       <h2>404 Not Found</h2>

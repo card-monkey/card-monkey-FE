@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import Header from "./components/Layout/Header";
-import Navbar from "./components/Layout/Navbar";
-import { authCheck } from "./utils/cookie";
+import Header from "./components/layout/Header";
+import Navbar from "./components/layout/Navbar";
 import { SlArrowUp } from "react-icons/sl";
 import throttle from "lodash.throttle";
 import styled from "styled-components";
@@ -11,9 +10,6 @@ const App = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [scroll, setScroll] = useState<boolean>(false);
-  useEffect(() => {
-    authCheck(pathname, navigate);
-  });
 
   useEffect(() => {
     window.addEventListener("scroll", throttle(handleScroll, 300));

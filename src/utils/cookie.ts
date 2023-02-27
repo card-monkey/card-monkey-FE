@@ -23,22 +23,22 @@ export const removeCookie = () => {
   });
 };
 
-export const authCheck = (pathname: string, navigate: any) => {
-  const token = getCookie();
-  axios
-    .get(VITE_URL + `/info/apply`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((result) => {
-      if (pathname === "/login" || pathname === "/signup") {
-        navigate(`/`);
-      }
-    })
-    .catch((error) => {
-      removeCookie();
-      if (pathname === `/signup`) {
-        return;
-      }
-      navigate(`/login`);
-    });
-};
+// export const authCheck = (pathname: string, navigate: any) => {
+//   const token = getCookie();
+//   axios
+//     .get(VITE_URL + `/info/apply`, {
+//       headers: { Authorization: `Bearer ${token}` },
+//     })
+//     .then((result) => {
+//       if (pathname === "/login" || pathname === "/signup") {
+//         navigate(`/`);
+//       }
+//     })
+//     .catch((error) => {
+//       removeCookie();
+//       if (pathname === `/signup`) {
+//         return;
+//       }
+//       navigate(`/login`);
+//     });
+// };

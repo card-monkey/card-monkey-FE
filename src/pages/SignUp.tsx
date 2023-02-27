@@ -8,7 +8,7 @@ import Password from "../components/signUp/Password";
 import styled from "styled-components";
 import { IoIosArrowBack } from "react-icons/io";
 import { useLocation, useNavigate } from "react-router";
-import { authCheck } from "../utils/cookie";
+import { getCookie } from "../utils/cookie";
 
 type Props = {};
 
@@ -16,13 +16,17 @@ const SignUp = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [step, setStep] = useState<number>(1);
+
+  useEffect(() => {
+    const token = getCookie();
+    if (token) {
+      navigate("/");
+    }
+  }, []);
+
   if (step === 0) {
     navigate("/login");
   }
-
-  useEffect(() => {
-    authCheck(pathname, navigate);
-  }, []);
 
   return (
     <Container>

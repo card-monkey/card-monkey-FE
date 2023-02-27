@@ -7,7 +7,7 @@ import { AppDispatch, RootState } from "../store/store";
 import { resetForm } from "../store/signUpSlice";
 import { useNavigate, useLocation } from "react-router-dom";
 import { fetchFavor } from "../store/favorSlice";
-import { authCheck, getCookie } from "../utils/cookie";
+import { getCookie } from "../utils/cookie";
 
 type Props = {};
 
@@ -20,7 +20,10 @@ const Login = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    authCheck(pathname, navigate);
+    const token = getCookie();
+    if (token) {
+      navigate("/");
+    }
   }, []);
 
   const login = async () => {

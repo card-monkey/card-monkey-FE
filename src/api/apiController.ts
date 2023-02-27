@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCookie } from "../utils/cookie";
+import { getCookie, removeCookie } from "../utils/cookie";
 
 const { VITE_URL } = import.meta.env;
 
@@ -21,9 +21,16 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   function (response) {
+    console.log(window.location.href);
     return response;
   },
   function (error) {
+    if (error.response.status === 403) {
+      removeCookie();
+      window.location.href = "/login";
+      return Promise.reject(error);
+    } else if (error.response.status === 404) {
+    }
     return Promise.reject(error);
   },
 );
