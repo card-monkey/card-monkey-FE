@@ -113,15 +113,31 @@ const Container = styled.div`
   .myaccount {
     display: flex;
     flex-direction: column;
-    width: 425px;
+    width: var(--width-inner);
     margin: 0 auto;
     padding-top: 200px;
+    .editTitle {
+      display: flex;
+      justify-content: space-between;
+    }
+    .toggle-title {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 20px;
+      h4 {
+        font-weight: 600;
+      }
+      .icon {
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
     .delete {
-      align-self: flex-end;
       font-size: 14px;
       color: var(--color-gray);
       font-weight: 600;
       cursor: pointer;
+      align-self: center;
       &:hover {
         color: var(--color-primary);
       }
@@ -159,7 +175,7 @@ const Container = styled.div`
   }
   .inputWrap {
     padding-top: 50px;
-    padding-bottom: 93px;
+    padding-bottom: 20px;
     width: 100%;
     font-size: 14px;
     .group {

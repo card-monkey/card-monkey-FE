@@ -6,7 +6,7 @@ import {
   AiOutlineCloseCircle,
 } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
-import { useLocation, useNavigate } from "react-router";
+import { redirect, useLocation, useNavigate } from "react-router";
 import { useSearchParams } from "react-router-dom";
 import getTokenApi from "../../api/monkeyGetToken";
 import { AppDispatch, RootState } from "../../store/store";
@@ -15,6 +15,7 @@ import { handleSearchName } from "../../store/searchSlice";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { IoIosArrowBack } from "react-icons/io";
+import { removeCookie } from "../../utils/cookie";
 
 type HeaderPropsType = {};
 
@@ -42,7 +43,7 @@ const Header = ({}: HeaderPropsType) => {
           onClick: async () => {
             const res = await getTokenApi.signOut();
             if (res?.status === 200 || res.data === "로그아웃 완료") {
-              localStorage.removeItem("userInfo");
+              removeCookie();
               navigate("/login", { replace: true });
             } else {
               alert("로그아웃 실패");

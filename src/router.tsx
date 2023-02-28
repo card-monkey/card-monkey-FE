@@ -13,12 +13,15 @@ import App from "./App";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
+import { loader as tokenLoader } from "./utils/loader";
+import { outLoader as goHome } from "./utils/loader";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <NotFound />,
+    loader: () => tokenLoader(),
     children: [
       {
         index: true,
@@ -49,10 +52,12 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+    loader: () => goHome(),
   },
   {
     path: "/signUp",
     element: <SignUp />,
+    loader: goHome,
   },
 ]);
 

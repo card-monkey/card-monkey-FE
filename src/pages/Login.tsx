@@ -19,12 +19,6 @@ const Login = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  useEffect(() => {
-    const token = getCookie();
-    if (token) {
-      navigate("/");
-    }
-  }, []);
 
   const login = async () => {
     const res = await setTokenApi.signIn({ userId, password });

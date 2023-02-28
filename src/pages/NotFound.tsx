@@ -11,6 +11,9 @@ const NotFound = (props: Props) => {
   };
   const error = useRouteError();
   if (isRouteErrorResponse(error)) {
+    if (error.status === 403) {
+      return <div>403 error</div>;
+    }
     if (error.status === 404) {
       return (
         <Container>

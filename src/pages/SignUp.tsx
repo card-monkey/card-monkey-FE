@@ -17,13 +17,6 @@ const SignUp = () => {
   const { pathname } = useLocation();
   const [step, setStep] = useState<number>(1);
 
-  useEffect(() => {
-    const token = getCookie();
-    if (token) {
-      navigate("/");
-    }
-  }, []);
-
   if (step === 0) {
     navigate("/login");
   }

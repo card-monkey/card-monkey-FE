@@ -12,7 +12,7 @@ const Detail = (props: Props) => {
   const { id } = useParams();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     const getCardInfo = async () => {
       const data = await getTokenApi.cardDetail(id);
       setCardInfo(data);
@@ -20,7 +20,7 @@ const Detail = (props: Props) => {
     getCardInfo();
   }, [id]);
 
-  if (cardInfo === undefined) return <NotFound />;
+  // if (cardInfo === undefined) return <NotFound />;
 
   return (
     <Wrapper>{cardInfo && <CardDetail card={cardInfo}></CardDetail>}</Wrapper>

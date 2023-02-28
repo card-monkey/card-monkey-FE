@@ -29,7 +29,6 @@ instance.interceptors.response.use(
       removeCookie();
       window.location.href = "/login";
       return Promise.reject(error);
-    } else if (error.response.status === 404) {
     }
     return Promise.reject(error);
   },

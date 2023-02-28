@@ -183,6 +183,16 @@ class MonkeyGetToken {
         return "에러";
       });
   }
+
+  /**관심혜택 변경 */
+  async changeBenefit(benefit: string[]) {
+    return this.instance
+      .patch(`/info/changeBenefit`, { benefit: benefit })
+      .then((result) => console.log(result.data))
+      .catch((error) => {
+        return "에러";
+      });
+  }
 }
 
 const getTokenApi = new MonkeyGetToken();
