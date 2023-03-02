@@ -15,7 +15,6 @@ export const fetchReviewList = createAsyncThunk(
   "review/fetchReviewList",
   async (id: number) => {
     const data = await getTokenApi.getReview(id);
-    console.log(id);
     return data;
   },
 );

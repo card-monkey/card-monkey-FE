@@ -1,0 +1,26 @@
+[
+  {
+    "id": 52,
+    "benefit": "transportation",
+    "name": "DA@카드의정석",
+    "company": "우리카드",
+    "image": "https://api.card-gorilla.com:8080/storage/card/87/card_img/20239/87card.png",
+    "type": "CREDIT"
+  },
+  {
+    "id": 12,
+    "benefit": "delivery",
+    "name": "라이언 치즈 체크카드",
+    "company": "NH농협카드",
+    "image": "https://api.card-gorilla.com:8080/storage/card/528/card_img/21216/528card.png",
+    "type": "CHECK"
+  },
+  {
+    "id": 35,
+    "benefit": "phone",
+    "name": "펭수 노리 체크카드(펭카),",
+    "company": "KB국민카드",
+    "image": "https://api.card-gorilla.com:8080/storage/card/559/card_img/21264/559card.png",
+    "type": "CHECK"
+  }
+]

@@ -1,5 +1,8 @@
 import axios from "axios";
 import instance from "./apiController";
+import cardDetailJson from "../mokeup/cardDetail.json";
+import favorListJson from "../mokeup/favorList.json";
+import suggestCardJson from "../mokeup/suggestCard.json";
 
 class MonkeyGetToken {
   instance;
@@ -26,7 +29,7 @@ class MonkeyGetToken {
       .get(`/info/apply`)
       .then((result) => result.data)
       .catch((error) => {
-        console.log(error);
+        error;
       });
   }
 
@@ -36,7 +39,7 @@ class MonkeyGetToken {
       .get("/card/rank")
       .then((result) => result.data)
       .catch((error) => {
-        console.log(error);
+        error;
       });
   }
 
@@ -45,7 +48,9 @@ class MonkeyGetToken {
     return this.instance
       .get(`/card/recommend`)
       .then((result) => result.data)
-      .catch((error) => error);
+      .catch((error) => {
+        return suggestCardJson;
+      });
   }
 
   /**카드명으로 검색 */
@@ -86,7 +91,7 @@ class MonkeyGetToken {
       .get(`/card/${id}`)
       .then((result) => result.data)
       .catch((error) => {
-        console.log(error);
+        return cardDetailJson;
       });
   }
 
@@ -96,10 +101,8 @@ class MonkeyGetToken {
       .post(`/card/apply/${id}`, {
         headers: { "Content-Type": "application/json" },
       })
-      .then((result) => console.log(result.data))
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((result) => result.data)
+      .catch((error) => error);
   }
 
   /**리뷰 조회(이모저모) */
@@ -109,19 +112,15 @@ class MonkeyGetToken {
       .then((result) => {
         return result.data;
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => error);
   }
 
   /**리뷰 선택(이모저모) */
   async selectReview(id: number, message: string[]) {
     return this.instance
       .post(`/card/review/${id}`, { id: id, message: message })
-      .then((result) => console.log(result))
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((result) => result)
+      .catch((error) => error);
   }
 
   /**비밀번호 변경 */
@@ -137,9 +136,7 @@ class MonkeyGetToken {
         newPassword: newPassword,
       })
       .then((result) => result.data)
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => error);
   }
 
   /**회원 탈퇴 */
@@ -149,9 +146,7 @@ class MonkeyGetToken {
       .then((result) => {
         return result;
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => error);
   }
 
   /**나의 관심상품 */
@@ -160,7 +155,7 @@ class MonkeyGetToken {
       .get(`/info/favor`)
       .then((result) => result.data)
       .catch((error) => {
-        console.log(error);
+        return favorListJson;
       });
   }
 
@@ -169,9 +164,7 @@ class MonkeyGetToken {
     return this.instance
       .delete(`/card/apply/${id}`)
       .then((result) => result.data)
-      .catch((error) => {
-        console.log("카드 취소 에러", error);
-      });
+      .catch((error) => error);
   }
 
   /**찜하기 or 찜하기 취소 */
@@ -188,7 +181,7 @@ class MonkeyGetToken {
   async changeBenefit(benefit: string[]) {
     return this.instance
       .patch(`/info/changeBenefit`, { benefit: benefit })
-      .then((result) => console.log(result.data))
+      .then((result) => result.data)
       .catch((error) => {
         return "에러";
       });

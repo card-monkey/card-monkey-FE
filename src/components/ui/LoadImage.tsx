@@ -9,7 +9,6 @@ export const loadImage = (setImageDimensions: any, imageUrl: string) => {
     });
   };
   img.onerror = (err) => {
-    console.log("img error");
-    console.error(err);
+    err;
   };
 };

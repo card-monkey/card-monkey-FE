@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "name": "010PAY 체크카드",
+  "company": "우리카드",
+  "image": "https://api.card-gorilla.com:8080/storage/card/765/card_img/25707/765card.png",
+  "type": "CHECK",
+  "annualFee": 0,
+  "lastMonthPaid": 0,
+  "apply": "https://ezauth.settlebank.co.kr/wooricard.do?utm_source=partner&utm_medium=int_gorilla_product&utm_campaign=cc_season2&utm_id=cc_season2",
+  "benefit": ["transportation"]
+}

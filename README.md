@@ -21,10 +21,10 @@
 - 1차: 2023.2.13 ~ 2023.2.24(총 12일)
 
 ### 링크 모음
-
+  
 <a href="https://card-monkey.netlify.app">
   <img src="https://img.shields.io/badge/배포사이트-F4AA3C?style=for-the-badge&logo=SurveyMonkey&logoColor=black" />
-</a>&nbsp;&nbsp;
+</a>&nbsp;&nbsp;  
 <a href="https://cold-clave-816.notion.site/0cb8268940ad439292a5cc522e5964a7">
   <img src="https://img.shields.io/badge/팀노션-e5e5e5?style=for-the-badge&logo=notion&logoColor=black" />
 </a>
@@ -196,12 +196,4 @@
 
 <img src="./public/시연영상/마이페이지_개인정보수정.gif">
 <br>
-
-# 8. 아쉬운 점
-
-- 검색 페이지에서 무한스크롤을 하지 못한 점이 아쉽다. 백에서 페이지 네이션을 지원하지 않아서 검색 결과를 모두 가져오는데 이것을 프론트에서 10개씩 쪼개어서 무한스크롤로 보여주려고 했지만 시간상 하지 못했다.
-
-- 검색 페이지에서 검색 된 상품을 클릭하여 상세 페이지로 이동 후 뒤로가기를 하여 돌아오면 다시 검색을 해서 리렌더링 되는 문제가 있어서 이것을 해결하려 했지만 못했서 아쉽다.
-
-- 토큰이 만료되면 로그인 페이지로 리다이렉트 되는 로직을 완벽하게 구현하지 못한 점이 아쉽다.
 

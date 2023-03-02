@@ -15,6 +15,7 @@ import { CgSmileSad } from "react-icons/cg";
 import SuggestCard from "../ui/SuggestCard";
 import { Benefits } from "../../pages/Suggest";
 import { toast, ToastContainer } from "react-toastify";
+import favorListJson from "../../mokeup/favorList.json";
 
 type Props = {
   card: CardInfo;
@@ -102,6 +103,7 @@ const CardDetail = ({ card }: Props) => {
   }, []);
 
   const application = async (id: number) => {
+    console.log("카드신청 api 호출");
     return await getTokenApi.cardApplication(id);
   };
 
@@ -114,29 +116,6 @@ const CardDetail = ({ card }: Props) => {
       hideProgressBar: true,
     });
   };
-  // const selectedReview = useSelector(
-  //   (state: RootState) => state.review.message,
-  // );
-
-  // const getReview = async () => {
-  //   const data = await getTokenApi.getReview(card.id);
-  //   setReviewList(data);
-  // };
-
-  // const clickSelect = (text: string) => {
-  //   dispatch(selectReview(text));
-  // };
-
-  // const reviewArray = [
-  //   "MZ세대가 선택한 카드",
-  //   "마트,,,다녀오셨어요? 쇼핑할 때 좋은 카드",
-  //   "뚜벅이분들~대중교통 할인 해줍니다",
-  //   "중요한건 꺾이지 않은 적립율",
-  //   "개봉 영화 모두 섭렵하는 나는 영화광",
-  //   "반려동물도 내 가족이니까! 동물병원 할인",
-  //   "핸드폰 비용도 알뜰하게 할인!",
-  //   "꼼꼼한 여행러에게 필수 카드",
-  // ];
 
   const width = () => {
     let width = cardImage.width > cardImage.height ? 240 : 150;
@@ -221,7 +200,7 @@ const CardDetail = ({ card }: Props) => {
             카드사 바로가기
           </Button>
         </div>
-        {favorList.find((item) => item.id === card.id) ? (
+        {favorList && favorList.find((item) => item.id === card.id) ? (
           <Button
             color={"var(--color-brown)"}
             background={"var(--color-lightgray)"}
@@ -249,60 +228,6 @@ const CardDetail = ({ card }: Props) => {
         </div>
       </SectionTitle>
       <SuggestCard />
-      {/* <SectionTitle>
-          <hr className="top" color="#f5f5f5" />
-          <div className="content">
-            <h5>Keyword</h5>
-            <span>사용자가 평가한 이 카드의 키워드입니다.</span>
-          </div>
-          <hr className="bottom" color="#f5f5f5" />
-        </SectionTitle>
-        <Reviews>
-          {reviewList.message[0] !== "" ? (
-            reviewList.message.map((message: string) => (
-              <li className="text" key={uuidv4()}>
-                {message}
-              </li>
-            ))
-          ) : (
-            <div className="fail-div">
-              <CgSmileSad className="smile-sad" size={28} />
-              <span className="fail">확인 가능한 키워드가 없어요.</span>
-            </div>
-          )}
-        </Reviews>
-        <hr className="bottom" color="#f5f5f5" />
-        <ChooseKeyword>
-          {reviewArray.map((text) => (
-            <BtnReview
-              type="button"
-              key={uuidv4()}
-              className={selectedReview.includes(text) ? "active" : ""}
-              onClick={() => clickSelect(text)}
-            >
-              {text}
-            </BtnReview>
-          ))}
-          {reviewList.message[0] !== "" ? (
-            <Button
-              color={"var(--color-white)"}
-              background={"var(--color-primary)"}
-              className={"able"}
-              onClick={() => dispatch(fetchReview({ id, selectedReview }))}
-            >
-              선택한 리뷰 변경하기
-            </Button>
-          ) : (
-            <Button
-              color={"var(--color-white)"}
-              background={"var(--color-primary)"}
-              className={"able"}
-              onClick={() => dispatch(fetchReview({ id, selectedReview }))}
-            >
-              리뷰 선택하기
-            </Button>
-          )}
-        </ChooseKeyword> */}{" "}
       <ToastContainer limit={1} />
     </Wrapper>
   );
@@ -493,58 +418,5 @@ const Benefit = styled.div`
     }
   }
 `;
-
-// const Reviews = styled.ul`
-//   display: grid;
-//   grid-gap: 10px;
-//   width: 400px;
-//   margin: 0 auto;
-//   place-items: center;
-//   padding-bottom: 30px;
-//   .text {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     border-radius: 15px;
-//     background-color: var(--color-lightgray);
-//     color: var(--color-primary);
-//     font-weight: 600;
-//     width: 100%;
-//     height: 50px;
-//     &::marker {
-//       background-color: var(--color-lightgray);
-//       color: var(--color-primary);
-//     }
-//   }
-// `;
-
-// const ChooseKeyword = styled.div`
-//   padding: 50px;
-//   justify-content: center;
-//   row-gap: 30px;
-//   column-gap: 0;
-//   place-items: center;
-// `;
-
-// const BtnReview = styled.button`
-//   display: inline-block;
-//   border: 1px solid #e0e0e0;
-//   border-radius: 15px;
-//   background-color: #ffffff;
-//   height: 50px;
-//   width: 400px;
-//   line-height: 22px;
-//   padding: 0 13px;
-//   margin-right: 12px;
-//   margin-top: 12px;
-//   cursor: pointer;
-//   &:hover {
-//     background: #f1f2f4;
-//   }
-//   &.active {
-//     background: #fffaef;
-//     border: 1px solid var(--color-primary);
-//   }
-// `;
 
 export default CardDetail;
